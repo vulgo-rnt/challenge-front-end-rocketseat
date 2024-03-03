@@ -17,10 +17,10 @@ export function getFieldByOrd(priority: FilterOrdTypes) {
   return { field: "sales", order: "DSC" };
 }
 
-export default function mountQuery({ type, ord }: FilterContext) {
+export default function mountQuery({ type, ord, page, skip }: FilterContext) {
   if (type === FilterTypes.ALL && ord === FilterOrdTypes.POPULARITY)
     return `query {
-        allProducts(sortField: "sales", sortOrder: "DSC") {
+        allProducts(sortField: "sales", sortOrder: "DSC", page:${page}, perPage:${skip}) {
           id
           name
           price_in_cents
@@ -32,9 +32,11 @@ export default function mountQuery({ type, ord }: FilterContext) {
   const categoryFilter = getCategoryByType(type);
   return `
     query {
-        allProducts(sortField: "${sortSettings.field}", sortOrder: "${
-    sortSettings.order
-  }", ${categoryFilter ? `filter: { category: "${categoryFilter}"}` : ""}) {
+        allProducts(page:${page}, perPage:${skip}, sortField: "${
+    sortSettings.field
+  }", sortOrder: "${sortSettings.order}", ${
+    categoryFilter ? `filter: { category: "${categoryFilter}"}` : ""
+  }) {
           id
           name
           price_in_cents
