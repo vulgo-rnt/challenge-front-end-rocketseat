@@ -24,7 +24,7 @@ const SelectContanier = styled.div`
   }
 `;
 
-const BoxItems = styled.ul`
+export const BoxItems = styled.ul`
   position: absolute;
   z-index: 2;
   margin-top: 4px;

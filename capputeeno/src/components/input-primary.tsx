@@ -1,5 +1,8 @@
 import styled from "styled-components";
-import { InputHTMLAttributes } from "react";
+import { InputHTMLAttributes, useState } from "react";
+import useSearch from "@/hook/useSearch";
+import { BoxItems } from "./filter-by-ord";
+import Link from "next/link";
 
 export const InputPrimary = styled.input`
   position: relative;
@@ -57,13 +60,49 @@ export function SearchIcon() {
   );
 }
 
+const LiContanier = styled.li`
+  * {
+    text-decoration: none;
+    color: var(--text-darker);
+  }
+`;
+
 export function InputPrimaryWithSeach(
   props: InputHTMLAttributes<HTMLInputElement>
 ) {
+  const [isOpen, setIsOpen] = useState(false);
+  const { search, setSearch, items } = useSearch();
+
+  const handlerChange = (value: string) => {
+    if (!isOpen) setIsOpen(true);
+    setSearch(value);
+  };
+
   return (
     <InputContanier>
-      <InputPrimary {...props} />
+      <InputPrimary
+        {...props}
+        value={search}
+        onChange={(event) => handlerChange(event.target.value)}
+        onFocus={() => {
+          if (search) setIsOpen(true);
+        }}
+        onBlur={() => {
+          setTimeout(() => setIsOpen(false), 100);
+        }}
+      />
       <SearchIcon />
+      {isOpen && (
+        <BoxItems>
+          {items.map((item) => {
+            return (
+              <LiContanier key={item.id} onClick={() => setIsOpen(false)}>
+                <Link href={`product?id=${item.id}`}>{item.name}</Link>
+              </LiContanier>
+            );
+          })}
+        </BoxItems>
+      )}
     </InputContanier>
   );
 }
