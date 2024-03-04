@@ -11,9 +11,9 @@ export function getFieldByOrd(priority: FilterOrdTypes) {
   if (priority === FilterOrdTypes.NEWS)
     return { field: "created_at", order: "ASC" };
   if (priority === FilterOrdTypes.BIGGEST_PRICE)
-    return { field: "price_in_cents", order: "ASC" };
-  if (priority === FilterOrdTypes.MINOR_PRICE)
     return { field: "price_in_cents", order: "DSC" };
+  if (priority === FilterOrdTypes.MINOR_PRICE)
+    return { field: "price_in_cents", order: "ASC" };
   return { field: "sales", order: "DSC" };
 }
 

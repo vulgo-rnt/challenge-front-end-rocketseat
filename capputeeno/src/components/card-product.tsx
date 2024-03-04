@@ -1,12 +1,15 @@
 import { formatPrice } from "@/commons/format-price";
 import Product from "@/types/product";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import styled from "styled-components";
 
 const ProductCardContanier = styled.div`
   width: 256px;
   background-color: #ffffff66;
   border-radius: 8px, 8px, 0px, 0px;
+
+  cursor: pointer;
 
   h3 {
     font-size: 16px;
@@ -37,13 +40,15 @@ const Divisor = styled.div`
   background-color: var(--shapes-2);
 `;
 export default function ProductCard(props: Product) {
+  const router = useRouter();
   return (
-    <ProductCardContanier>
+    <ProductCardContanier onClick={() => router.push(`product?id=${props.id}`)}>
       <ImageNext>
         <Image
           src={props.image_url}
           alt={props.name}
           fill
+          priority
           sizes="max-inline-size: 100%"
         />
       </ImageNext>
