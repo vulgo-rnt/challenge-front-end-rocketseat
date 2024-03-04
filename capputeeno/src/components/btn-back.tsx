@@ -5,10 +5,13 @@ import { useRouter } from "next/navigation";
 const BtnBackContanier = styled.div`
   display: flex;
   justify-content: start;
-  align-items: center;
-  gap: 8px;
 
-  cursor: pointer;
+  div {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    cursor: pointer;
+  }
 
   p {
     width: 40px;
@@ -29,11 +32,13 @@ const SvgContanier = styled.span`
 export default function BtnBack() {
   const router = useRouter();
   return (
-    <BtnBackContanier onClick={() => router.back()}>
-      <SvgContanier>
-        <BackArrow />
-      </SvgContanier>
-      <p>Voltar</p>
+    <BtnBackContanier>
+      <div onClick={() => router.back()}>
+        <SvgContanier>
+          <BackArrow />
+        </SvgContanier>
+        <p>Voltar</p>
+      </div>
     </BtnBackContanier>
   );
 }

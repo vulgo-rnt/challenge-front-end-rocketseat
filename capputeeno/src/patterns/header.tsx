@@ -5,6 +5,8 @@ import styled from "styled-components";
 import { InputPrimaryWithSeach } from "@/components/input-primary";
 import { Saira_Stencil_One } from "next/font/google";
 import { CartIconWithStore } from "@/components/cart-icon";
+import useSearch from "@/hook/useSearch";
+import { useDeferredValue } from "react";
 
 const sairaStencil = Saira_Stencil_One({
   subsets: ["latin"],
@@ -41,7 +43,9 @@ export default function Header() {
         capputeeno
       </Logo>
       <div>
-        <InputPrimaryWithSeach placeholder="Procurando por algo específico?" />
+        <InputPrimaryWithSeach
+          placeholder="Procurando por algo específico?"
+        />
         <CartIconWithStore />
       </div>
     </ContanierHeader>
