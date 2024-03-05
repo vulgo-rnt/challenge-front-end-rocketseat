@@ -8,4 +8,5 @@ export default interface Product {
 export interface ProductDetails extends Product {
   description: string;
   category: string;
+  quantity: number;
 }
