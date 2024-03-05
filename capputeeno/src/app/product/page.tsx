@@ -1,6 +1,6 @@
 "use client";
+
 import BtnBack from "@/components/btn-back";
-import { PageContanier } from "@/components/page-contanier";
 import { useProduct } from "@/hook/useProduct";
 import ProductDetails from "@/patterns/product-details";
 import styled from "styled-components";
@@ -17,11 +17,11 @@ export default function Page({
   const product = useProduct(searchParams.id);
 
   return (
-    <PageContanier>
+    <>
       <BtnBackContanier>
         <BtnBack />
       </BtnBackContanier>
       {product.data && <ProductDetails data={product.data} />}
-    </PageContanier>
+    </>
   );
 }

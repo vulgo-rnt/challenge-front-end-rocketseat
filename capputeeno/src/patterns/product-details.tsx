@@ -1,5 +1,6 @@
 import { formatPrice } from "@/commons/format-price";
 import CartIcon from "@/components/icons/cart";
+import useLocalStorage from "@/hook/useLocalStorage";
 import { ProductDetails } from "@/types/product";
 import Image from "next/image";
 import styled from "styled-components";
@@ -81,6 +82,8 @@ const BtnAddCart = styled.span`
   align-items: center;
   gap: 12px;
 
+  cursor: pointer;
+
   height: 44px;
   border-radius: 4px;
   background-color: #115d8c;
@@ -90,28 +93,13 @@ const BtnAddCart = styled.span`
 `;
 
 export default function ProductDetails({ data }: { data: ProductDetails }) {
+  const { addItem } = useLocalStorage("cart-items");
+
   const handleClickCart = () => {
-    let cartItems = localStorage.getItem("cart-items");
-    if (cartItems) {
-      let cartItemsArray = JSON.parse(cartItems);
-
-      let existingProductIndex = cartItemsArray.findIndex(
-        (item: { id: string }) => item.id === data.id
-      );
-
-      if (existingProductIndex != -1) {
-        cartItemsArray[existingProductIndex].quantity += 1;
-      } else {
-        cartItemsArray.push({ ...data, quantity: 1, id: data.id });
-      }
-
-      localStorage.setItem("cart-items", JSON.stringify(cartItemsArray));
-    } else {
-      const newCart = [{ ...data, quantity: 1, id: data.id }];
-      localStorage.setItem("cart-items", JSON.stringify(newCart));
-    }
+    addItem(data);
     alert("Item adicionado no carrinho");
   };
+
   return (
     <MainContanier>
       <ImageContanier>

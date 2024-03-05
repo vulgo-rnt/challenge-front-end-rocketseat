@@ -4,6 +4,7 @@ import Header from "@/patterns/header";
 import { Saira } from "next/font/google";
 import StyledComponentsRegistry from "@/lib/registry";
 import { DefaultProviders } from "@/patterns/default-providers";
+import { PageContanier } from "@/components/page-contanier";
 
 const saira = Saira({
   subsets: ["latin"],
@@ -26,7 +27,7 @@ export default function RootLayout({
         <StyledComponentsRegistry>
           <DefaultProviders>
             <Header />
-            {children}
+            <PageContanier>{children}</PageContanier>
           </DefaultProviders>
         </StyledComponentsRegistry>
       </body>
