@@ -27,9 +27,9 @@ export default function useLocalStorage(context: string) {
 
   const addItem = (data: ProductDetails) => {
     if (storage.length > 0) {
-      let cartItemsArray = storage;
+      const cartItemsArray = storage;
 
-      let existingProductIndex = cartItemsArray.findIndex(
+      const existingProductIndex = cartItemsArray.findIndex(
         (item: { id: string }) => item.id === data.id
       );
 
@@ -56,7 +56,6 @@ export default function useLocalStorage(context: string) {
     cartItemsArray[productIndex].quantity = quantity;
 
     uptadeStorage(cartItemsArray);
-
   };
 
   return { storage, uptadeStorage, removeItem, addItem, uptadeItem };

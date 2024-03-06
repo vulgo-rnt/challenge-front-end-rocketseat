@@ -11,11 +11,15 @@ const ProductCardContanier = styled.div`
 
   cursor: pointer;
 
+  div {
+    padding: 0 12px;
+  }
+
   h3 {
     font-size: 16px;
     font-weight: 300;
     line-height: 150%;
-    padding: 8px 12px;
+    padding: 8px 0;
     color: var(--text-darker);
   }
 
@@ -24,7 +28,7 @@ const ProductCardContanier = styled.div`
     line-height: 150%;
     font-size: 14px;
     color: var(--shapes-dark);
-    padding: 8px 12px;
+    padding: 8px 0;
   }
 `;
 
@@ -33,9 +37,7 @@ const ImageNext = styled.div`
   width: 256px;
   height: 300px;
 `;
-const Divisor = styled.div`
-  margin-left: 12px;
-  width: 228px;
+export const Divisor = styled.div`
   height: 1px;
   background-color: var(--shapes-2);
 `;
@@ -52,9 +54,11 @@ export default function ProductCard(props: Product) {
           sizes="max-inline-size: 100%"
         />
       </ImageNext>
-      <h3>{props.name}</h3>
-      <Divisor />
-      <p>{formatPrice(props.price_in_cents)}</p>
+      <div>
+        <h3>{props.name}</h3>
+        <Divisor />
+        <p>{formatPrice(props.price_in_cents)}</p>
+      </div>
     </ProductCardContanier>
   );
 }

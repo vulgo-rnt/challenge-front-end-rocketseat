@@ -18,6 +18,10 @@ select {
   all: unset;
 }
 
+button {
+  all: unset;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
