@@ -10,6 +10,18 @@
   --color-orange-low: #ffa585;
 }
 
+input {
+  all: unset;
+}
+
+select {
+  all: unset;
+}
+
+button {
+  all: unset;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
