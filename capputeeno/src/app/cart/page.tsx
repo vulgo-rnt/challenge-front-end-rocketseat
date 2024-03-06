@@ -157,11 +157,11 @@ export default function Page() {
                 data={item}
                 removeItem={() => removeItem(item.id)}
                 uptadeItem={(quantity) => {
+                  uptadeItem(item.id, quantity);
                   setTotalPrice(formatPrice(calculateTotal(storage)));
                   setTotalPriceWithDelivery(
                     formatPrice(calculateTotal(storage) + delivery)
                   );
-                  uptadeItem(item.id, quantity);
                 }}
               />
             </li>
