@@ -9,6 +9,10 @@ const FooterContanier = styled.footer`
   display: flex;
   justify-content: end;
   padding: 74px 0 60px 0;
+
+  @media (max-width: 620px) {
+    padding: 40px 0 40px 0;
+  }
 `;
 
 export default function Home() {

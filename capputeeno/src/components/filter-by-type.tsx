@@ -12,6 +12,11 @@ const ListContanier = styled.ul`
   align-items: center;
   gap: 40px;
   list-style: none;
+  min-width: max-content;
+
+  @media (max-width: 620px) {
+    gap: 20px;
+  }
 `;
 
 const Item = styled.li<FilterItemsProps>`

@@ -9,12 +9,32 @@ const NavContanier = styled.nav`
   gap: 18px;
   color: var(--text-dark);
   padding: 32px 0;
+
+  @media (max-width: 865px) {
+    padding: 22px 0;
+  }
 `;
 
 const FiltersContanier = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @media (max-width: 550px) {
+    flex-direction: column;
+    gap: 10px;
+    ul {
+      li {
+        font-size: 12px;
+        line-height: unset;
+        border-bottom-width: 2px;
+      }
+    }
+    div {
+      p {
+        font-size: 10px;
+      }
+    }
+  }
 `;
 
 const PaginationContanier = styled.div`

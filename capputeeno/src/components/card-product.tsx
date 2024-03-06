@@ -5,9 +5,9 @@ import { useRouter } from "next/navigation";
 import styled from "styled-components";
 
 const ProductCardContanier = styled.div`
-  width: 256px;
   background-color: #ffffff66;
-  border-radius: 8px, 8px, 0px, 0px;
+  width: min-content;
+  height: max-content;
 
   cursor: pointer;
 
@@ -30,12 +30,26 @@ const ProductCardContanier = styled.div`
     color: var(--shapes-dark);
     padding: 8px 0;
   }
+
+  @media (max-width: 630px) {
+    p {
+      font-size: 10px;
+    }
+    h3 {
+      font-size: 12px;
+    }
+  }
 `;
 
 const ImageNext = styled.div`
   position: relative;
   width: 256px;
   height: 300px;
+
+  @media (max-width: 630px) {
+    width: 150px;
+    height: 150px;
+  }
 `;
 export const Divisor = styled.div`
   height: 1px;
@@ -49,6 +63,7 @@ export default function ProductCard(props: Product) {
         <Image
           src={props.image_url}
           alt={props.name}
+          style={{ borderRadius: "8px 8px 0 0" }}
           fill
           priority
           sizes="max-inline-size: 100%"

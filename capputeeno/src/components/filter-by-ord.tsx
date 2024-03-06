@@ -6,6 +6,9 @@ import useFilter from "@/hook/useFilter";
 
 const FilterContanier = styled.div`
   position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: end;
 `;
 
 const SelectContanier = styled.div`
