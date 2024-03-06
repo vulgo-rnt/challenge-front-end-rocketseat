@@ -4,19 +4,25 @@ import CartIcon from "./icons/cart";
 import { useRouter } from "next/navigation";
 
 const CartCount = styled.span`
+  position: absolute;
   color: white;
   background-color: var(--color-delete);
   width: 17px;
   height: 17px;
-  padding: 0 5px;
+  text-align: center;
+  line-height: 17px;
   font-size: 10px;
   border-radius: 100%;
-  margin-left: -10px;
+  right: 0;
+  bottom: -5px;
 `;
 
 const CartContanier = styled.div`
   position: relative;
   cursor: pointer;
+  width: 31px;
+  display: flex;
+  align-items: center;
 `;
 
 export function CartIconWithStore() {

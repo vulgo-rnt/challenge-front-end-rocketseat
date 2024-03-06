@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/patterns/header";
 import { Saira } from "next/font/google";
-import StyledComponentsRegistry from "@/lib/registry";
 import { DefaultProviders } from "@/patterns/default-providers";
 import { PageContanier } from "@/components/page-contanier";
 
@@ -24,12 +23,10 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body className={saira.className}>
-        <StyledComponentsRegistry>
-          <DefaultProviders>
-            <Header />
-            <PageContanier>{children}</PageContanier>
-          </DefaultProviders>
-        </StyledComponentsRegistry>
+        <DefaultProviders>
+          <Header />
+          <PageContanier>{children}</PageContanier>
+        </DefaultProviders>
       </body>
     </html>
   );
