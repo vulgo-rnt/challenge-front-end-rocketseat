@@ -13,15 +13,24 @@ interface CardCartProps {
 
 const CardContanier = styled.div`
   display: flex;
-  width: 736px;
-  height: 211px;
-  border-radius: 8px;
+  max-width: 736px;
+
+  @media (max-width: 1315px) {
+    flex-direction: column;
+    width: 256px;
+  }
 `;
 
 const ImageNext = styled.div`
   position: relative;
   width: 256px;
   height: 211px;
+  border-radius: 8px 0 0 8px;
+  overflow: hidden;
+
+  @media (max-width: 1315px) {
+    border-radius: 8px 8px 0 0;
+  }
 `;
 
 const InfoContanier = styled.div`
@@ -29,10 +38,14 @@ const InfoContanier = styled.div`
   flex-direction: column;
   padding: 16px 16px 24px 31px;
   background-color: white;
-  border-radius: 8px;
-  max-width: 480px;
+  width: 480px;
   color: var(--text-darker);
   gap: 12px;
+
+  @media (max-width: 1315px) {
+    padding: 13px;
+    width: 256px;
+  }
 
   svg {
     cursor: pointer;
@@ -125,7 +138,7 @@ export default function CardCart({
         <Image
           src={data.image_url}
           alt={data.name}
-          style={{ borderRadius: "8px 0 0 8px" }}
+          objectFit="cover"
           fill
           priority
           sizes="max-inline-size: 100%"

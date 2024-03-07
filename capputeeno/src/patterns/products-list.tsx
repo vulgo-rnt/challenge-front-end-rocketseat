@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 const ProductsListContanier = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 32px;
   column-gap: 24px;

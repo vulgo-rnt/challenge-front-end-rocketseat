@@ -13,6 +13,11 @@ const MainContanier = styled.main`
   display: flex;
   gap: 32px;
   padding-top: 25px;
+  justify-content: space-between;
+
+  @media (max-width: 700px) {
+    flex-direction: column;
+  }
 `;
 
 const FirstBlock = styled.section`
@@ -25,6 +30,7 @@ const FirstBlock = styled.section`
     display: flex;
     flex-direction: column;
     gap: 6px;
+
     h2 {
       font-size: 24px;
       font-weight: 500;
@@ -41,26 +47,32 @@ const FirstBlock = styled.section`
   ul {
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
     list-style: none;
     gap: 16px;
     margin-bottom: 45px;
+
+    @media (max-width: 1315px) {
+      flex-direction: row;
+    }
   }
 `;
-const calculateTotal = (value: ProductDetails[]) => {
-  return value.reduce(
-    (sum, item) => (sum += item.price_in_cents * item.quantity),
-    0
-  );
-};
 
 const SecondBlock = styled.div`
-  width: 352px;
+  width: 100%;
+  max-width: 352px;
+  min-width: 250px;
   max-height: 700px;
-  margin-top: 15px;
+  margin: 15px auto 35px auto;
 
   background-color: white;
   padding: 16px 24px 24px 24px;
   color: var(--text-darker);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   h2 {
     font-size: 20px;
@@ -97,7 +109,8 @@ const SecondBlock = styled.div`
   }
 
   button {
-    width: 303px;
+    max-width: 303px;
+    width: 100%;
     height: 44px;
     border-radius: 4px;
     background-color: #51b853;
@@ -111,7 +124,7 @@ const SecondBlock = styled.div`
   }
 
   section {
-    margin-top: 100%;
+    margin-top: 100px;
     ul {
       list-style: none;
       text-decoration: underline;
@@ -126,6 +139,12 @@ const SecondBlock = styled.div`
     }
   }
 `;
+const calculateTotal = (value: ProductDetails[]) => {
+  return value.reduce(
+    (sum, item) => (sum += item.price_in_cents * item.quantity),
+    0
+  );
+};
 
 export default function Page() {
   const { storage, removeItem, uptadeItem } = useLocalStorage("cart-items");
@@ -157,11 +176,11 @@ export default function Page() {
                 data={item}
                 removeItem={() => removeItem(item.id)}
                 uptadeItem={(quantity) => {
+                  uptadeItem(item.id, quantity);
                   setTotalPrice(formatPrice(calculateTotal(storage)));
                   setTotalPriceWithDelivery(
                     formatPrice(calculateTotal(storage) + delivery)
                   );
-                  uptadeItem(item.id, quantity);
                 }}
               />
             </li>
@@ -169,33 +188,37 @@ export default function Page() {
         </ul>
       </FirstBlock>
       <SecondBlock>
-        <h2>RESUMO DO PEDIDO</h2>
-        <div data-block>
-          <span>
-            <p>Subtotal de produtos</p>
-            <p>{totalPrice}</p>
+        <div>
+          <h2>RESUMO DO PEDIDO</h2>
+          <div data-block>
+            <span>
+              <p>Subtotal de produtos</p>
+              <p>{totalPrice}</p>
+            </span>
+            <span>
+              <p>Entrega</p>
+              <p>{formatPrice(delivery)}</p>
+            </span>
+          </div>
+          <Divisor />
+          <span data-block-2>
+            <p>Total</p>
+            <p>{totalPriceWithDelivery}</p>
           </span>
-          <span>
-            <p>Entrega</p>
-            <p>{formatPrice(delivery)}</p>
-          </span>
+          <button onClick={() => alert("Compra Efetuada")}>
+            FINALIZAR A COMPRA
+          </button>
         </div>
-        <Divisor />
-        <span data-block-2>
-          <p>Total</p>
-          <p>{totalPriceWithDelivery}</p>
-        </span>
-        <button onClick={() => alert("Compra Efetuada")}>
-          FINALIZAR A COMPRA
-        </button>
-        <section>
-          <ul>
-            <li>AJUDA</li>
-            <li>REEMBOLSOS</li>
-            <li>ENTREGAS E FRETE</li>
-            <li>TROCAS E DEVOLUÇÕES</li>
-          </ul>
-        </section>
+        <div>
+          <section>
+            <ul>
+              <li>AJUDA</li>
+              <li>REEMBOLSOS</li>
+              <li>ENTREGAS E FRETE</li>
+              <li>TROCAS E DEVOLUÇÕES</li>
+            </ul>
+          </section>
+        </div>
       </SecondBlock>
     </MainContanier>
   );
