@@ -10,6 +10,17 @@ const ImageContanier = styled.div`
   width: 640px;
   height: 580px;
   border-radius: 4px;
+
+  @media (max-width: 1300px) {
+    width: 100%;
+    height: 500px;
+  }
+  @media (max-width: 800px) {
+    height: 450px;
+  }
+  @media (max-width: 465px) {
+    height: 350px;
+  }
 `;
 
 const MainContanier = styled.div`
@@ -17,12 +28,20 @@ const MainContanier = styled.div`
   justify-content: center;
   gap: 32px;
   padding-bottom: 89px;
+  @media (max-width: 700px) {
+    flex-direction: column;
+  }
 `;
 
 const ContentContenier = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  gap: 12px;
+
+  @media (max-width: 700px) {
+    gap: 35px;
+  }
 `;
 
 const Details = styled.div`
@@ -30,7 +49,7 @@ const Details = styled.div`
   align-items: flex-start;
   justify-content: center;
   flex-direction: column;
-  width: 448px;
+  max-width: 448px;
 
   span {
     font-weight: 400;
@@ -107,6 +126,7 @@ export default function ProductDetails({ data }: { data: ProductDetails }) {
           src={data.image_url}
           alt={data.name}
           fill
+          priority
           sizes="max-inline-size: 100%"
         />
       </ImageContanier>

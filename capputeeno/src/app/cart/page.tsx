@@ -46,12 +46,6 @@ const FirstBlock = styled.section`
     margin-bottom: 45px;
   }
 `;
-const calculateTotal = (value: ProductDetails[]) => {
-  return value.reduce(
-    (sum, item) => (sum += item.price_in_cents * item.quantity),
-    0
-  );
-};
 
 const SecondBlock = styled.div`
   width: 352px;
@@ -126,6 +120,12 @@ const SecondBlock = styled.div`
     }
   }
 `;
+const calculateTotal = (value: ProductDetails[]) => {
+  return value.reduce(
+    (sum, item) => (sum += item.price_in_cents * item.quantity),
+    0
+  );
+};
 
 export default function Page() {
   const { storage, removeItem, uptadeItem } = useLocalStorage("cart-items");

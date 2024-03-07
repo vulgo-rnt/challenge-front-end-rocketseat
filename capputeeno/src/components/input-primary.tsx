@@ -67,12 +67,12 @@ export function InputPrimaryWithSeach(
         {...props}
         open={inputIsOpen}
         value={search}
-        onChange={(event) => handlerChange(event.target.value)}
+        onChange={(event) => {
+          if (event.target.value === "") setIsOpen(false);
+          handlerChange(event.target.value);
+        }}
         onFocus={() => {
           if (search) setIsOpen(true);
-        }}
-        onBlur={() => {
-          setTimeout(() => setIsOpen(false), 10);
         }}
       />
       <span onClick={() => setInputIsOpen(!inputIsOpen)}>
@@ -82,7 +82,12 @@ export function InputPrimaryWithSeach(
         <BoxItems>
           {items.map((item) => {
             return (
-              <LiContanier key={item.id} onClick={() => setIsOpen(false)}>
+              <LiContanier
+                key={item.id}
+                onClick={() => {
+                  setIsOpen(false);
+                }}
+              >
                 <Link href={`product?id=${item.id}`}>{item.name}</Link>
               </LiContanier>
             );

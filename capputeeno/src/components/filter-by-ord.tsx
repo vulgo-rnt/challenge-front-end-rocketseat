@@ -31,7 +31,7 @@ export const BoxItems = styled.ul`
   position: absolute;
   z-index: 2;
   margin-top: 4px;
-  bottom: -1;
+  top: 100%;
   right: 0;
   display: flex;
   background-color: white;
