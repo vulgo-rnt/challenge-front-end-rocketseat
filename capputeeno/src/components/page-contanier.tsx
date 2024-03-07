@@ -7,7 +7,7 @@ export const PageContanier = styled.main`
   padding: 0 160px;
   min-height: 100%;
 
-  @media (max-width: 1136px) {
+  @media (max-width: 1230px) {
     padding: 0 70px;
   }
   @media (max-width: 865px) {

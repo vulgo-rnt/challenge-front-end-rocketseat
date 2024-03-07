@@ -13,6 +13,11 @@ const MainContanier = styled.main`
   display: flex;
   gap: 32px;
   padding-top: 25px;
+  justify-content: space-between;
+
+  @media (max-width: 700px) {
+    flex-direction: column;
+  }
 `;
 
 const FirstBlock = styled.section`
@@ -25,6 +30,7 @@ const FirstBlock = styled.section`
     display: flex;
     flex-direction: column;
     gap: 6px;
+
     h2 {
       font-size: 24px;
       font-weight: 500;
@@ -41,16 +47,24 @@ const FirstBlock = styled.section`
   ul {
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
     list-style: none;
     gap: 16px;
     margin-bottom: 45px;
+
+    @media (max-width: 1315px) {
+      flex-direction: row;
+    }
   }
 `;
 
 const SecondBlock = styled.div`
-  width: 352px;
+  width: 100%;
+  max-width: 352px;
+  min-width: 250px;
   max-height: 700px;
-  margin-top: 15px;
+  margin: 15px auto 35px auto;
 
   background-color: white;
   padding: 16px 24px 24px 24px;
@@ -91,7 +105,8 @@ const SecondBlock = styled.div`
   }
 
   button {
-    width: 303px;
+    max-width: 303px;
+    width: 100%;
     height: 44px;
     border-radius: 4px;
     background-color: #51b853;

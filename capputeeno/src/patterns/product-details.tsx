@@ -127,6 +127,7 @@ export default function ProductDetails({ data }: { data: ProductDetails }) {
           alt={data.name}
           fill
           priority
+          objectFit="cover"
           sizes="max-inline-size: 100%"
         />
       </ImageContanier>

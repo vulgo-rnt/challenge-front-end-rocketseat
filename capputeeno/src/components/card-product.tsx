@@ -45,6 +45,8 @@ const ImageNext = styled.div`
   position: relative;
   width: 256px;
   height: 300px;
+  overflow: hidden;
+  border-radius: 8px 8px 0 0;
 
   @media (max-width: 630px) {
     width: 150px;
@@ -63,9 +65,9 @@ export default function ProductCard(props: Product) {
         <Image
           src={props.image_url}
           alt={props.name}
-          style={{ borderRadius: "8px 8px 0 0" }}
           fill
           priority
+          objectFit="cover"
           sizes="max-inline-size: 100%"
         />
       </ImageNext>
