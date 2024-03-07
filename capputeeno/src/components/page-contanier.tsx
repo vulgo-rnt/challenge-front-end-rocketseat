@@ -5,7 +5,7 @@ import styled from "styled-components";
 export const PageContanier = styled.main`
   background-color: var(--bg-default);
   padding: 0 160px;
-  min-height: 100%;
+  min-height: 100vh;
 
   @media (max-width: 1230px) {
     padding: 0 70px;

@@ -14,7 +14,6 @@ interface CardCartProps {
 const CardContanier = styled.div`
   display: flex;
   max-width: 736px;
-  width: max-content;
 
   @media (max-width: 1315px) {
     flex-direction: column;
@@ -39,12 +38,13 @@ const InfoContanier = styled.div`
   flex-direction: column;
   padding: 16px 16px 24px 31px;
   background-color: white;
-  max-width: 480px;
+  width: 480px;
   color: var(--text-darker);
   gap: 12px;
 
   @media (max-width: 1315px) {
     padding: 13px;
+    width: 256px;
   }
 
   svg {

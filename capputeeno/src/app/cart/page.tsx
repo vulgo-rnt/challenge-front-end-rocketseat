@@ -70,6 +70,10 @@ const SecondBlock = styled.div`
   padding: 16px 24px 24px 24px;
   color: var(--text-darker);
 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
   h2 {
     font-size: 20px;
     font-weight: 600;
@@ -120,7 +124,7 @@ const SecondBlock = styled.div`
   }
 
   section {
-    margin-top: 100%;
+    margin-top: 100px;
     ul {
       list-style: none;
       text-decoration: underline;
@@ -184,33 +188,37 @@ export default function Page() {
         </ul>
       </FirstBlock>
       <SecondBlock>
-        <h2>RESUMO DO PEDIDO</h2>
-        <div data-block>
-          <span>
-            <p>Subtotal de produtos</p>
-            <p>{totalPrice}</p>
+        <div>
+          <h2>RESUMO DO PEDIDO</h2>
+          <div data-block>
+            <span>
+              <p>Subtotal de produtos</p>
+              <p>{totalPrice}</p>
+            </span>
+            <span>
+              <p>Entrega</p>
+              <p>{formatPrice(delivery)}</p>
+            </span>
+          </div>
+          <Divisor />
+          <span data-block-2>
+            <p>Total</p>
+            <p>{totalPriceWithDelivery}</p>
           </span>
-          <span>
-            <p>Entrega</p>
-            <p>{formatPrice(delivery)}</p>
-          </span>
+          <button onClick={() => alert("Compra Efetuada")}>
+            FINALIZAR A COMPRA
+          </button>
         </div>
-        <Divisor />
-        <span data-block-2>
-          <p>Total</p>
-          <p>{totalPriceWithDelivery}</p>
-        </span>
-        <button onClick={() => alert("Compra Efetuada")}>
-          FINALIZAR A COMPRA
-        </button>
-        <section>
-          <ul>
-            <li>AJUDA</li>
-            <li>REEMBOLSOS</li>
-            <li>ENTREGAS E FRETE</li>
-            <li>TROCAS E DEVOLUÇÕES</li>
-          </ul>
-        </section>
+        <div>
+          <section>
+            <ul>
+              <li>AJUDA</li>
+              <li>REEMBOLSOS</li>
+              <li>ENTREGAS E FRETE</li>
+              <li>TROCAS E DEVOLUÇÕES</li>
+            </ul>
+          </section>
+        </div>
       </SecondBlock>
     </MainContanier>
   );
