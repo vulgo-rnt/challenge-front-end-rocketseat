@@ -4,9 +4,11 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "json-graphql-server db.js --h 0.0.0.0 --p 3333"
+    "start": "node index.js"
   },
   "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
     "faker": "^5.5.3",
     "json-graphql-server": "^2.2.3"
   }
