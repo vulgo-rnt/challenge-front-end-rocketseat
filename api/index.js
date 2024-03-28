@@ -1,2 +1,2 @@
 const { execSync } = require("node:child_process");
-execSync("yarn start");
+execSync("npm run start");
