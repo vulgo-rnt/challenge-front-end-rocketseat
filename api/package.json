@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "test":"node index.js",
     "start": "json-graphql-server db.js --h 0.0.0.0 --p 3333"
   },
   "dependencies": {
