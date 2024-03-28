@@ -1,2 +1,7 @@
 const { execSync } = require("node:child_process");
-execSync("npm run start");
+try {
+  execSync("npm run start");
+} catch (err) {
+  execSync("npm i");
+  execSync("npm run start");
+}
