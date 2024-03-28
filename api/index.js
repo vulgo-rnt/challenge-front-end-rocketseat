@@ -1,7 +1,13 @@
-const { execSync } = require("node:child_process");
-try {
-  execSync("npm run start");
-} catch (err) {
-  execSync("npm i");
-  execSync("npm run start");
-}
+const express = require("express");
+const jsonGraphqlExpress = require("json-graphql-server").default;
+const data = require("./db.js");
+const cors = require("cors");
+
+const PORT = 3333;
+const app = express();
+
+app.use(cors());
+app.use("/", jsonGraphqlExpress(data));
+app.listen(PORT, () => {
+  console.log("server up...");
+});
